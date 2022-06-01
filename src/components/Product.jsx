@@ -1,22 +1,13 @@
 import React from "react";
+import ProductImages from "./ProductImages.jsx";
 
 export default function Product(props) {
-    function createHeroes(image) {
-        return <img src={image} alt="" />;
-    }
-    function createThumbnails(image) {
-        return (
-            <button className="thumbnail">
-                <img src={image} alt="" />
-            </button>
-        );
-    }
     return (
         <div className="product">
-            <div className="product-hero">
-                <div className="active-hero">{props.productImages.map(createHeroes)}</div>
-                <div className="thumbnails">{props.thumbnailImages.map(createThumbnails)}</div>
-            </div>
+            <ProductImages
+                productImages={props.productImages}
+                thumbnailImages={props.thumbnailImages}
+            />
             <div className="product-detail">
                 <p className="product-designer">{props.designer}</p>
                 <h1 className="product-name">{props.name}</h1>

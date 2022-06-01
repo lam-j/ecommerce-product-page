@@ -7,6 +7,7 @@ export default function ProductPage() {
     function createProduct(data) {
         return (
             <Product
+                key={data.designer + data.name}
                 designer={data.designer}
                 name={data.name}
                 description={data.description}
