@@ -1,12 +1,27 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 export default function Header(props) {
     const isCartEmpty = useRef(false);
+    const [subtotal, setSubtotal] = useState(0);
+    const [totalItemCount, setTotalItemCount] = useState(0);
+
     useEffect(() => {
         if (props.itemCart.length === 0) {
             isCartEmpty.current = true;
         }
         isCartEmpty.current = false;
+
+        let newSubtotal = 0;
+        props.itemCart.forEach((item) => {
+            newSubtotal += item.currentPrice * item.quantity;
+        });
+        setSubtotal(newSubtotal);
+
+        let newItemCount = 0;
+        props.itemCart.forEach((item) => {
+            newItemCount += item.quantity;
+        });
+        setTotalItemCount(newItemCount);
     }, [props.itemCart]);
 
     function createCartItem(item) {
@@ -52,7 +67,7 @@ export default function Header(props) {
             </div>
             <div className="action-buttons">
                 {props.itemCart.length !== 0 && (
-                    <div className="cart-size-notification">{props.itemCart.length}</div>
+                    <div className="cart-size-notification">{totalItemCount}</div>
                 )}
                 <button>
                     <img
@@ -74,8 +89,8 @@ export default function Header(props) {
                     <img className="user" src="./images/bag-on-head.png" alt="user" />
                 </button>
             </div>
-            <div className="popup-cart">
-                <h4>Cart &nbsp;&#40;{props.itemCart.length}&#41;</h4>
+            <div className="popup-cart active">
+                <h4>Cart</h4>
                 <hr />
                 <div className="items-in-cart">
                     {props.itemCart.length === 0 && (
@@ -83,6 +98,18 @@ export default function Header(props) {
                     )}
                     {props.itemCart.length !== 0 && props.itemCart.map(createCartItem)}
                 </div>
+                {props.itemCart.length !== 0 && (
+                    <div className="popup-subtotal">
+                        <h4>
+                            Subtotal&nbsp;&nbsp;
+                            <span>
+                                &#40;{totalItemCount}&nbsp;
+                                {totalItemCount > 1 ? "items" : "item"}&#41;
+                            </span>{" "}
+                        </h4>
+                        <h4 className="subtotal-amount">${subtotal.toFixed(2)}</h4>
+                    </div>
+                )}
                 {props.itemCart.length !== 0 && (
                     <button className="popup-checkout">Checkout</button>
                 )}
