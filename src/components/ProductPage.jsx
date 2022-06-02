@@ -6,6 +6,20 @@ import data from "../data/products.json";
 
 export default function ProductPage() {
     const [isLightboxActive, setIsLightboxActive] = useState(false);
+    const [itemCart, setItemCart] = useState([]);
+
+    function addToCart(itemName, currentPrice, quantity, productIcon) {
+        const newItem = {
+            name: itemName,
+            currentPrice: currentPrice,
+            quantity: quantity,
+            image: productIcon,
+        };
+        console.log(itemCart);
+        setItemCart((prev) => {
+            return [...prev, newItem];
+        });
+    }
 
     function toggleLightbox() {
         setIsLightboxActive((prev) => !prev);
@@ -31,6 +45,7 @@ export default function ProductPage() {
                 productImages={data.productImages}
                 thumbnailImages={data.thumbnailImages}
                 toggleLightbox={toggleLightbox}
+                addToCart={addToCart}
             />
         );
     }
@@ -48,8 +63,8 @@ export default function ProductPage() {
     return (
         <div className="page-container">
             <div className="lightbox-backdrop"></div>
-            <div className="wrapper">
-                <Header />
+            <div className="product-page-wrapper">
+                <Header itemCart={itemCart} />
                 <hr />
                 {data.map(createProduct)}
                 {data.map(createLightbox)}

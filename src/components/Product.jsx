@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProductImages from "./ProductImages.jsx";
 
 export default function Product(props) {
-    const [count, setCount] = useState(0);
+    const [quantity, setQuantity] = useState(0);
     return (
         <div className="product">
             <ProductImages
@@ -27,7 +27,7 @@ export default function Product(props) {
                             src="./images/icon-minus.svg"
                             alt="minus"
                             onClick={() => {
-                                setCount((prev) => {
+                                setQuantity((prev) => {
                                     if (prev - 1 >= 0) {
                                         return prev - 1;
                                     } else {
@@ -36,12 +36,12 @@ export default function Product(props) {
                                 });
                             }}
                         />
-                        <h4>{count}</h4>
+                        <h4>{quantity}</h4>
                         <img
                             src="./images/icon-plus.svg"
                             alt="plus"
                             onClick={() => {
-                                setCount((prev) => {
+                                setQuantity((prev) => {
                                     if (prev + 1 <= 10) {
                                         return prev + 1;
                                     } else {
@@ -51,7 +51,17 @@ export default function Product(props) {
                             }}
                         />
                     </div>
-                    <button>
+                    <button
+                        onClick={() => {
+                            if (quantity > 0) {
+                                props.addToCart(
+                                    props.name,
+                                    props.currentPrice,
+                                    quantity,
+                                    props.thumbnailImages[0]
+                                );
+                            }
+                        }}>
                         <img src="./images/icon-cart-white.svg" alt="checkout-cart" />
                         Add to cart
                     </button>

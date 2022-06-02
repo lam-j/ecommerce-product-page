@@ -30,7 +30,7 @@ a {
 }
 
 hr {
-    border: 0.25px solid hsla(0, 6%, 90%, 0.6);
+    border: 1px solid hsla(0, 2%, 76%, 0.4);
     width: 100%;
 }
 
@@ -40,7 +40,7 @@ hr {
     width: 100vw;
 }
 
-.wrapper {
+.product-page-wrapper {
     display: grid;
     grid-template-columns: 1fr;
     padding: 2.5% 10%;
@@ -51,6 +51,7 @@ hr {
 .header {
     align-items: center;
     display: flex;
+    margin-bottom: 15px;
 }
 
 .navigation > ul {
@@ -88,8 +89,8 @@ hr {
     margin-left: 30px;
 }
 img.user {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
 }
 img.user:hover {
     border: 1px solid var(--orange);
@@ -306,4 +307,60 @@ p.original-price {
 .product-checkout > button > img {
     height: 12px;
     margin-right: 10px;
+}
+
+/* Popup Cart */
+
+.popup-cart {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px var(--grayishBlue);
+    display: none;
+    height: 250px;
+    width: 350px;
+    position: absolute;
+    top: 100px;
+    right: 100px;
+}
+.popup-cart > h4 {
+    margin-left: 20px;
+}
+.popup-cart.active {
+    display: block;
+}
+
+.items-in-cart {
+    display: grid;
+}
+.empty-cart {
+    font-weight: 700;
+    justify-self: center;
+    position: relative;
+    top: 50px;
+}
+
+.itemInCart {
+    align-items: center;
+    display: flex;
+    margin: 0 20px;
+}
+.itemInCart img {
+    border-radius: 3px;
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+}
+.itemInCart p {
+    font-size: 15px;
+    line-height: 1.5rem;
+}
+.itemInCart span {
+    color: black;
+    font-weight: 700;
+}
+
+img.delete-icon {
+    margin-left: auto;
+    height: 15px;
+    width: 15px;
 }
