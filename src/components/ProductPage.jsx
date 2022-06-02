@@ -9,15 +9,35 @@ export default function ProductPage() {
     const [itemCart, setItemCart] = useState([]);
 
     function addToCart(itemName, currentPrice, quantity, productIcon) {
-        const newItem = {
-            name: itemName,
-            currentPrice: currentPrice,
-            quantity: quantity,
-            image: productIcon,
-        };
-        setItemCart((prev) => {
-            return [...prev, newItem];
-        });
+        const isAlreadyInCart = itemCart.some((item) => item.name === itemName);
+
+        if (isAlreadyInCart) {
+            const updatedCart = itemCart.map((item) => {
+                if (itemName === item.name) {
+                    let newQuantity = item.quantity + quantity;
+                    if (newQuantity >= 10) {
+                        newQuantity = 10;
+                    }
+                    const updatedItem = {
+                        ...item,
+                        quantity: newQuantity,
+                    };
+                    return updatedItem;
+                }
+                return updatedCart;
+            });
+            setItemCart(updatedCart);
+        } else {
+            const newItem = {
+                name: itemName,
+                currentPrice: currentPrice,
+                quantity: quantity,
+                image: productIcon,
+            };
+            setItemCart((prev) => {
+                return [...prev, newItem];
+            });
+        }
     }
 
     function deleteFromCart(name) {

@@ -274,7 +274,7 @@ p.original-price {
     background-color: var(--lightGrayishBlue);
     border-radius: 10px;
     display: flex;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 .quantity h4 {
     padding: 15px 15px;
@@ -326,19 +326,17 @@ p.original-price {
     margin-left: 20px;
 }
 .popup-cart.active {
-    display: block;
+    display: grid;
 }
 
 .items-in-cart {
-    /* display: block;
     height: 100px;
-    overflow: scroll; */
+    overflow: scroll;
 }
 .empty-cart {
     font-weight: 700;
-    justify-self: center;
-    position: relative;
-    top: 50px;
+    margin-left: 100px;
+    margin-top: 35px;
 }
 
 .itemInCart {

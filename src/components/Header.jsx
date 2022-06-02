@@ -16,7 +16,7 @@ export default function Header(props) {
                 <p>
                     {item.name}
                     <br /> ${item.currentPrice} x {item.quantity}
-                    <span> = ${item.currentPrice * item.quantity}.00</span>
+                    <span> &nbsp;=&nbsp; ${item.currentPrice * item.quantity}.00</span>
                 </p>
                 <img
                     className="delete-icon"
@@ -71,14 +71,18 @@ export default function Header(props) {
                     <img className="user" src="./images/image-avatar.png" alt="" />
                 </button>
             </div>
-            <div className="popup-cart active">
-                <h4>Cart</h4>
+            <div className="popup-cart">
+                <h4>Cart &nbsp;&#40;{props.itemCart.length}&#41;</h4>
                 <hr />
                 <div className="items-in-cart">
-                    {/* {isCartEmpty && <p className="empty-cart">Your cart is empty.</p>} */}
-                    {props.itemCart.map(createCartItem)}
+                    {props.itemCart.length === 0 && (
+                        <p className="empty-cart">Your cart is empty.</p>
+                    )}
+                    {props.itemCart.length !== 0 && props.itemCart.map(createCartItem)}
                 </div>
-                <button className="popup-checkout">Checkout</button>
+                {props.itemCart.length !== 0 && (
+                    <button className="popup-checkout">Checkout</button>
+                )}
             </div>
         </div>
     );
