@@ -13,7 +13,7 @@
     --grayishBlue: hsl(220, 14%, 75%);
     --lightGrayishBlue: hsl(223, 64%, 98%);
     --white: hsl(0, 0%, 100%);
-    --blackLightbox: hsl(0, 0%, 0%);
+    --blackLightbox: hsla(0, 0%, 0%, 75%);
     /* b lack(with 75% opacity for lightbox background) */
 }
 
@@ -33,10 +33,16 @@ hr {
     width: 100%;
 }
 
+.page-container {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
 .wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    margin: 2.5% 10%;
+    padding: 2.5% 10%;
 }
 
 /* ----- Header & Navigation Bar ----- */
@@ -104,10 +110,12 @@ img.user:hover {
     display: grid;
     grid-template-columns: 1fr;
     grid-row-gap: 2rem;
+    margin-right: 5rem;
 }
 
 img.hero {
     border-radius: 15px;
+    cursor: pointer;
     display: none;
     height: 450px;
     width: 450px;
@@ -125,7 +133,7 @@ img.hero.active {
 }
 
 img.thumbnail {
-    border-radius: 10px;
+    border-radius: 15px;
     height: 90px;
     width: 90px;
 }
@@ -133,6 +141,70 @@ img.thumbnail {
 img.thumbnail.active {
     border: 3px solid var(--orange);
     opacity: 50%;
+}
+
+/* Lightbox */
+
+.lightbox-backdrop {
+    background-color: var(--blackLightbox);
+    display: none;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+}
+.lightbox-active .lightbox-backdrop {
+    display: block;
+}
+
+.lightbox-wrapper {
+    display: none;
+    position: absolute;
+    align-self: center;
+    justify-self: center;
+    height: auto;
+    width: 550px;
+    text-align: right;
+}
+
+.lightbox-active .lightbox-wrapper {
+    display: block;
+}
+
+button.close-lightbox {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.swiper {
+    text-align: center;
+}
+
+.swiper img {
+    border-radius: 15px;
+    height: 500px;
+    width: 500px;
+}
+
+.lightbox-wrapper .thumbnails {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-top: 3rem;
+    width: 500px;
+    position: relative;
+    left: 40px;
+}
+
+.lightbox-wrapper img.thumbnail {
+    border-radius: 15px;
+    height: 100px;
+    width: 100px;
+}
+.close-lightbox {
+    padding: 0 25px 15px 0;
+}
+.close-lightbox svg:hover {
+    fill: orange;
 }
 
 /* Product Description */

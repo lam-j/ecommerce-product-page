@@ -7,6 +7,7 @@ export default function Product(props) {
             <ProductImages
                 productImages={props.productImages}
                 thumbnailImages={props.thumbnailImages}
+                toggleLightbox={props.toggleLightbox}
             />
             <div className="product-detail">
                 <p className="product-designer">{props.designer}</p>

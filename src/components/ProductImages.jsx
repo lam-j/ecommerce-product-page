@@ -52,20 +52,15 @@ export default function ProductImages(props) {
         }
     }
 
-    function displayLightbox() {
-        return 0;
-    }
-
     function createHeroes(image, index) {
         return (
             <img
                 className="hero"
                 src={image}
-                alt={"hero" + index}
-                key={"hero" + index}
+                alt={"hero " + index}
                 id={"hero" + index}
-                index={index}
-                onClick={displayLightbox}
+                key={"hero" + index}
+                onClick={props.toggleLightbox}
             />
         );
     }
@@ -74,7 +69,7 @@ export default function ProductImages(props) {
             <img
                 className="thumbnail"
                 src={image}
-                alt={"thumbnail" + index}
+                alt={"thumbnail " + index}
                 key={"thumbnail" + index}
                 id={"thumbnail" + index}
                 onClick={toggleImage}
