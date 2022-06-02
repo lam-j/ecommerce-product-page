@@ -15,9 +15,16 @@ export default function ProductPage() {
             quantity: quantity,
             image: productIcon,
         };
-        console.log(itemCart);
         setItemCart((prev) => {
             return [...prev, newItem];
+        });
+    }
+
+    function deleteFromCart(name) {
+        setItemCart((prev) => {
+            return prev.filter((item) => {
+                return item.name !== name;
+            });
         });
     }
 
@@ -64,7 +71,7 @@ export default function ProductPage() {
         <div className="page-container">
             <div className="lightbox-backdrop"></div>
             <div className="product-page-wrapper">
-                <Header itemCart={itemCart} />
+                <Header itemCart={itemCart} deleteFromCart={deleteFromCart} />
                 <hr />
                 {data.map(createProduct)}
                 {data.map(createLightbox)}

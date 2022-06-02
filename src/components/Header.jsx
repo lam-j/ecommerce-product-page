@@ -15,10 +15,15 @@ export default function Header(props) {
                 <img src={item.image} alt="item" />
                 <p>
                     {item.name}
-                    <br /> ${item.currentPrice} x {item.quantity} =
-                    <span> ${item.currentPrice * item.quantity}.00</span>
+                    <br /> ${item.currentPrice} x {item.quantity}
+                    <span> = ${item.currentPrice * item.quantity}.00</span>
                 </p>
-                <img className="delete-icon" src="./images/icon-delete.svg" alt="delete" />
+                <img
+                    className="delete-icon"
+                    src="./images/icon-delete.svg"
+                    alt="delete"
+                    onClick={() => props.deleteFromCart(item.name)}
+                />
             </div>
         );
     }
@@ -73,6 +78,7 @@ export default function Header(props) {
                     {/* {isCartEmpty && <p className="empty-cart">Your cart is empty.</p>} */}
                     {props.itemCart.map(createCartItem)}
                 </div>
+                <button className="popup-checkout">Checkout</button>
             </div>
         </div>
     );
