@@ -1,33 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Thumbs } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import "swiper/css/thumbs";
 
 export default function Lightbox(props) {
+    const [activeThumb, setActiveThumb] = useState();
+
     function createSlides(image, index) {
         return (
-            <SwiperSlide key={"SwiperSlide" + index}>
-                <img src={image} alt={"slide " + index} key={"slide" + index} />
+            <SwiperSlide key={index}>
+                <img src={image} alt={"slide " + index} />
             </SwiperSlide>
         );
     }
 
     function createThumbnails(image, index) {
         return (
-            <img
-                className="thumbnail"
-                src={image}
-                alt={"thumbnail " + index}
-                key={"thumbnail" + index}
-                id={"thumbnail" + index}
-            />
+            <SwiperSlide key={index}>
+                <img className="thumbnail" src={image} alt={"thumbnail " + index} />
+            </SwiperSlide>
         );
     }
 
@@ -39,18 +36,25 @@ export default function Lightbox(props) {
                 </svg>
             </button>
             <Swiper
-                className="swiper"
-                // install Swiper modules
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                className="heroes-slider"
+                modules={[Navigation, Thumbs]}
                 spaceBetween={50}
                 slidesPerView={1}
                 navigation
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log("slide change")}>
+                grabCursor={true}
+                loop={true}
+                thumbs={{ swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null }}>
                 {props.productImages.map(createSlides)}
             </Swiper>
-
-            <div className="thumbnails">{props.thumbnailImages.map(createThumbnails)}</div>
+            <Swiper
+                className="heroes-slider-thumbs"
+                modules={[Navigation, Thumbs]}
+                spaceBetween={10}
+                slidesPerView={4}
+                navigation
+                onSwiper={setActiveThumb}>
+                {props.thumbnailImages.map(createThumbnails)}
+            </Swiper>
         </div>
     );
 }

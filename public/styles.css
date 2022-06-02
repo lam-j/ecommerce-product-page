@@ -162,10 +162,9 @@ img.thumbnail.active {
     align-self: center;
     justify-self: center;
     height: auto;
-    width: 550px;
+    width: 650px;
     text-align: right;
 }
-
 .lightbox-active .lightbox-wrapper {
     display: block;
 }
@@ -175,36 +174,52 @@ button.close-lightbox {
     border: none;
     cursor: pointer;
 }
-
-.swiper {
-    text-align: center;
+.close-lightbox {
+    padding: 0 25px 15px 0;
+}
+.close-lightbox svg:hover {
+    fill: orange;
 }
 
-.swiper img {
+.heroes-slider {
+    text-align: center;
+}
+.swiper-button-prev,
+.swiper-button-next {
+    border-radius: 100%;
+    color: white;
+}
+
+.heroes-slider img {
     border-radius: 15px;
     height: 500px;
     width: 500px;
 }
 
-.lightbox-wrapper .thumbnails {
+.heroes-slider-thumbs {
+    margin-top: 2rem;
+    position: absolute;
+    right: 5px;
+    width: 500px;
+}
+/* .lightbox-wrapper .thumbnails {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     padding-top: 3rem;
     width: 500px;
     position: relative;
     left: 40px;
-}
+} */
 
 .lightbox-wrapper img.thumbnail {
     border-radius: 15px;
+    cursor: pointer;
     height: 100px;
     width: 100px;
 }
-.close-lightbox {
-    padding: 0 25px 15px 0;
-}
-.close-lightbox svg:hover {
-    fill: orange;
+.lightbox-wrapper img.thumbnail:hover {
+    border: 1px solid var(--orange);
+    opacity: 80%;
 }
 
 /* Product Description */
