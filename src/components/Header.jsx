@@ -51,6 +51,9 @@ export default function Header(props) {
                 </ul>
             </div>
             <div className="action-buttons">
+                {props.itemCart.length !== 0 && (
+                    <div className="cart-size-notification">{props.itemCart.length}</div>
+                )}
                 <button>
                     <img
                         className="checkout"
@@ -68,7 +71,7 @@ export default function Header(props) {
                     />
                 </button>
                 <button>
-                    <img className="user" src="./images/image-avatar.png" alt="" />
+                    <img className="user" src="./images/bag-on-head.png" alt="user" />
                 </button>
             </div>
             <div className="popup-cart">

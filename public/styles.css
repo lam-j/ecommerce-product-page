@@ -89,8 +89,8 @@ hr {
     margin-left: 30px;
 }
 img.user {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }
 img.user:hover {
     border: 1px solid var(--orange);
@@ -377,4 +377,18 @@ button.popup-checkout {
     justify-self: center;
     padding: 16px 120px;
     margin: 20px 20px 30px;
+}
+
+.cart-size-notification {
+    background-color: var(--orange);
+    border-radius: 10px;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    text-align: center;
+    height: 12px;
+    width: 17px;
+    position: relative;
+    left: 35px;
+    top: -10px;
 }
