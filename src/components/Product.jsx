@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductImages from "./ProductImages.jsx";
 
 export default function Product(props) {
+    const [count, setCount] = useState(0);
     return (
         <div className="product">
             <ProductImages
@@ -21,7 +22,35 @@ export default function Product(props) {
                     <p className="original-price">${props.originalPrice}</p>
                 </div>
                 <div className="product-checkout">
-                    <input type="number" name="" id="" />
+                    <div className="quantity">
+                        <img
+                            src="./images/icon-minus.svg"
+                            alt="minus"
+                            onClick={() => {
+                                setCount((prev) => {
+                                    if (prev - 1 >= 0) {
+                                        return prev - 1;
+                                    } else {
+                                        return prev;
+                                    }
+                                });
+                            }}
+                        />
+                        <h4>{count}</h4>
+                        <img
+                            src="./images/icon-plus.svg"
+                            alt="plus"
+                            onClick={() => {
+                                setCount((prev) => {
+                                    if (prev + 1 <= 10) {
+                                        return prev + 1;
+                                    } else {
+                                        return prev;
+                                    }
+                                });
+                            }}
+                        />
+                    </div>
                     <button>
                         <img src="./images/icon-cart-white.svg" alt="checkout-cart" />
                         Add to cart

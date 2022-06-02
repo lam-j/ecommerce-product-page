@@ -4,6 +4,7 @@
     /* ### Primary */
 
     --orange: hsl(26, 100%, 55%);
+    --shadowOrange: hsl(25, 100%, 90%);
     --paleOrange: hsl(25, 100%, 94%);
 
     /* ### Neutral */
@@ -137,7 +138,9 @@ img.thumbnail {
     height: 90px;
     width: 90px;
 }
-
+img.thumbnail:hover {
+    opacity: 50%;
+}
 img.thumbnail.active {
     border: 3px solid var(--orange);
     opacity: 50%;
@@ -175,8 +178,9 @@ button.close-lightbox {
     cursor: pointer;
 }
 .close-lightbox {
-    padding: 0 25px 15px 0;
+    padding: 0 75px 20px 0;
 }
+
 .close-lightbox svg:hover {
     fill: orange;
 }
@@ -184,12 +188,6 @@ button.close-lightbox {
 .heroes-slider {
     text-align: center;
 }
-.swiper-button-prev,
-.swiper-button-next {
-    border-radius: 100%;
-    color: white;
-}
-
 .heroes-slider img {
     border-radius: 15px;
     height: 500px;
@@ -202,14 +200,6 @@ button.close-lightbox {
     right: 5px;
     width: 500px;
 }
-/* .lightbox-wrapper .thumbnails {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding-top: 3rem;
-    width: 500px;
-    position: relative;
-    left: 40px;
-} */
 
 .lightbox-wrapper img.thumbnail {
     border-radius: 15px;
@@ -278,21 +268,42 @@ p.original-price {
     display: flex;
 }
 
-.product-checkout > input {
+.quantity {
+    align-items: center;
+    background-color: var(--lightGrayishBlue);
+    border-radius: 10px;
+    display: flex;
     margin-right: 10px;
+}
+.quantity h4 {
+    padding: 15px 15px;
+    margin: 0;
+}
+.quantity img {
+    cursor: pointer;
+    padding: 15px 20px;
+    margin: 0;
 }
 
 .product-checkout > button {
     background-color: var(--orange);
     border: none;
     border-radius: 10px;
+    box-shadow: 0 20px 20px var(--shadowOrange);
     color: white;
     cursor: pointer;
     font-family: "Kumbh Sans", sans-serif;
     font-size: 12px;
     font-weight: 700;
-    padding: 15px 60px;
+    padding: 16px 60px;
 }
-.product-checkout button > img {
+.product-checkout > button:hover {
+    opacity: 85%;
+}
+.product-checkout > button:active {
+    border: 5px solid var(--orange);
+}
+.product-checkout > button > img {
     height: 12px;
+    margin-right: 10px;
 }
